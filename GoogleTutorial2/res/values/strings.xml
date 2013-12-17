@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GoogleTutorial2</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="edit_message">Scrivi qualche minchia</string>
+    <string name="button_send">Invia</string>
+    <string name="title_activity_display_message">My Message</string>
+    <string name="button_photo">Scatta una foto</string>
+    <string name="album_name">Album</string>
+    <string name="btnIntend">Bottone1</string>
+    <string name="btnIntendS">Bottone2</string>
+    <string name="btnIntendV">Bottone3</string>
+    <string name="cannot">Vacca troia</string>
+    <string name="title_activity_display">Display</string>
+    <string name="title_activity_photo">PhotoActivity</string>
+    <string name="title_activity_image_serve">ImageServe</string>
+
+</resources>
