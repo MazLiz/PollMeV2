@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/myimageendpoint/v1/20131217103334/java/1.16.0-rc/example.com-myimageendpoint-v1-20131217103334-java-1.16.0-rc-sources.jar", 
-      "path": "example.com-myimageendpoint-v1-20131217103334-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/myimageendpoint/v1/20131217170206/java/1.16.0-rc/example.com-myimageendpoint-v1-20131217170206-java-1.16.0-rc-sources.jar", 
+      "path": "example.com-myimageendpoint-v1-20131217170206-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-12-17 10:33"
+      "timestamp": "2013-12-17 17:02"
     }, 
     {
-      "path": "example.com-myimageendpoint-v1-20131217103334-java-1.16.0-rc.jar.properties", 
+      "path": "example.com-myimageendpoint-v1-20131217170206-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "googletutorial2", 
   "language_version": "1.16.0-rc", 
   "id": "myimageendpoint:v1", 
-  "revision": 20131217103334
+  "revision": 20131217170206
 }
