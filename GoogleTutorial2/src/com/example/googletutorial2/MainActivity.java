@@ -1,11 +1,13 @@
 package com.example.googletutorial2;
 //ciaoooooooo! Funzioaaaaaaaaaaaaaa
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,6 +32,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		//mImageView2 = (ImageView) findViewById(R.id.imageView3);	
@@ -50,6 +53,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		startActivityForResult(intent, imageCode);
 	}
 
+	// Crea il menù con tutte le opzioni
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -57,7 +61,21 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 
-
+	// Risponde alla pressione di un pulsante sul menù
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_search:
+	            System.out.println("Premuto Cerca");
+	            return true;
+	        case R.id.action_settings:
+	        	System.out.println("Premuto Settings");
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 
 	
 	/**

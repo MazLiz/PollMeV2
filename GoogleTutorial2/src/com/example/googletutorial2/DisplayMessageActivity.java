@@ -16,12 +16,15 @@ public class DisplayMessageActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		//Attiva il pulsante per tornare indietro (NB: va modificato anche nel manifest)
 		// Make sure we're running on Honeycomb or higher to use ActionBar APIs
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			// Show the Up button in the action bar.
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 
+		
 		Intent intent = getIntent(); // recupero l'intent che ha generato
 										// l'attività
 
