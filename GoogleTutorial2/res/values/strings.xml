@@ -16,5 +16,6 @@
     <string name="title_activity_display">Display</string>
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="title_activity_image_serve">ImageServe</string>
-
+	<string name="action_search">Search</string>
+    
 </resources>
