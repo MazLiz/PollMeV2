@@ -83,10 +83,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	 * perchè un bottone è un oggetto view ed è proprio quello che lancia il
 	 * click
 	 */
-	public void sendMessage(View view) {
-		// Do something in response to button
+	public void sendMessage(View view) { 
+		//Do something in response to button
 
-		// intent= messaggio (contesto di appartenenza, a chi devo inviare il
+		// intent = messaggio (contesto di appartenenza, a chi devo inviare il
 		// messaggio);
 		Intent intent = new Intent(this, DisplayMessageActivity.class);
 
