@@ -2,7 +2,7 @@
   "extends" : "thirdParty.api",
   "abstract" : false,
   "root" : "https://myapp.appspot.com/_ah/api",
-  "name" : "deviceinfoendpoint",
+  "name" : "notificaendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
@@ -27,14 +27,72 @@
   "ownerName" : "example.com",
   "packagePath" : "googletutorial2",
   "methods" : {
-    "deviceinfoendpoint.listDeviceInfo" : {
-      "path" : "deviceinfo",
+    "notificaendpoint.removeNotifica" : {
+      "path" : "notifica/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.googletutorial2.NotificaEndpoint.removeNotifica",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "notificaendpoint.updateNotifica" : {
+      "path" : "notifica",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.googletutorial2.NotificaEndpoint.updateNotifica",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "notificaendpoint.getNotifica" : {
+      "path" : "notifica/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.listDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.NotificaEndpoint.getNotifica",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "notificaendpoint.listNotifica" : {
+      "path" : "notifica",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.googletutorial2.NotificaEndpoint.listNotifica",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -52,72 +110,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "deviceinfoendpoint.insertDeviceInfo" : {
-      "path" : "deviceinfo",
+    "notificaendpoint.insertNotifica" : {
+      "path" : "notifica",
       "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.insertDeviceInfo",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "deviceinfoendpoint.getDeviceInfo" : {
-      "path" : "deviceinfo/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.getDeviceInfo",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "deviceinfoendpoint.removeDeviceInfo" : {
-      "path" : "deviceinfo/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.removeDeviceInfo",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "deviceinfoendpoint.updateDeviceInfo" : {
-      "path" : "deviceinfo",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.updateDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.NotificaEndpoint.insertNotifica",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -129,65 +129,98 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_DeviceInfo" : {
-        "id" : "CollectionResponse_DeviceInfo",
+      "Notifica" : {
+        "id" : "Notifica",
+        "type" : "object",
+        "properties" : {
+          "keyN" : {
+            "$ref" : "Key"
+          },
+          "mittenteN" : {
+            "type" : "string"
+          },
+          "destinatarioN" : {
+            "type" : "string"
+          },
+          "tipo" : {
+            "type" : "string"
+          },
+          "statoLett" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_Notifica" : {
+        "id" : "CollectionResponse_Notifica",
         "type" : "object",
         "properties" : {
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "DeviceInfo"
+              "$ref" : "Notifica"
             }
           },
           "nextPageToken" : {
             "type" : "string"
           }
         }
-      },
-      "DeviceInfo" : {
-        "id" : "DeviceInfo",
-        "type" : "object",
-        "properties" : {
-          "deviceRegistrationID" : {
-            "type" : "string"
-          },
-          "deviceInformation" : {
-            "type" : "string"
-          },
-          "timestamp" : {
-            "type" : "string",
-            "format" : "int64"
-          }
-        }
       }
     },
     "methods" : {
-      "com.example.googletutorial2.DeviceInfoEndpoint.listDeviceInfo" : {
-        "response" : {
-          "$ref" : "CollectionResponse_DeviceInfo"
-        }
+      "com.example.googletutorial2.NotificaEndpoint.removeNotifica" : {
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.insertDeviceInfo" : {
+      "com.example.googletutorial2.NotificaEndpoint.updateNotifica" : {
         "request" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "Notifica"
         },
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "Notifica"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.getDeviceInfo" : {
+      "com.example.googletutorial2.NotificaEndpoint.getNotifica" : {
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "Notifica"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.removeDeviceInfo" : {
+      "com.example.googletutorial2.NotificaEndpoint.listNotifica" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Notifica"
+        }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.updateDeviceInfo" : {
+      "com.example.googletutorial2.NotificaEndpoint.insertNotifica" : {
         "request" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "Notifica"
         },
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "Notifica"
         }
       }
     }

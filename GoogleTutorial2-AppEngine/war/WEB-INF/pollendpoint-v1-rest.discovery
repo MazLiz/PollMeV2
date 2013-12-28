@@ -1,9 +1,9 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/1mxmv_YDC4h5IpaWpePtbieM-Wc\"",
+ "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/cXHX3d4bxIEM5Cui3RnoKFPGsNA\"",
  "discoveryVersion": "v1",
- "id": "deviceinfoendpoint:v1",
- "name": "deviceinfoendpoint",
+ "id": "pollendpoint:v1",
+ "name": "pollendpoint",
  "version": "v1",
  "description": "This is an API",
  "ownerDomain": "example.com",
@@ -14,10 +14,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myapp.appspot.com/_ah/api/deviceinfoendpoint/v1/",
- "basePath": "/_ah/api/deviceinfoendpoint/v1/",
+ "baseUrl": "https://myapp.appspot.com/_ah/api/pollendpoint/v1/",
+ "basePath": "/_ah/api/pollendpoint/v1/",
  "rootUrl": "https://myapp.appspot.com/_ah/api/",
- "servicePath": "deviceinfoendpoint/v1/",
+ "servicePath": "pollendpoint/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -74,14 +74,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_DeviceInfo": {
-   "id": "CollectionResponse_DeviceInfo",
+  "CollectionResponse_Poll": {
+   "id": "CollectionResponse_Poll",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "DeviceInfo"
+      "$ref": "Poll"
      }
     },
     "nextPageToken": {
@@ -89,32 +89,67 @@
     }
    }
   },
-  "DeviceInfo": {
-   "id": "DeviceInfo",
+  "Key": {
+   "id": "Key",
    "type": "object",
    "properties": {
-    "deviceInformation": {
+    "appId": {
      "type": "string"
     },
-    "deviceRegistrationID": {
-     "type": "string"
+    "complete": {
+     "type": "boolean"
     },
-    "timestamp": {
+    "id": {
      "type": "string",
      "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
+    }
+   }
+  },
+  "Poll": {
+   "id": "Poll",
+   "type": "object",
+   "properties": {
+    "chiuso": {
+     "type": "string"
+    },
+    "creatore": {
+     "type": "string"
+    },
+    "dataCr": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "keyPoll": {
+     "$ref": "Key"
+    },
+    "titolo": {
+     "type": "string"
     }
    }
   }
  },
  "methods": {
-  "getDeviceInfo": {
-   "id": "deviceinfoendpoint.getDeviceInfo",
-   "path": "deviceinfo/{id}",
+  "getPoll": {
+   "id": "pollendpoint.getPoll",
+   "path": "poll/{id}",
    "httpMethod": "GET",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
+     "format": "int64",
      "location": "path"
     }
    },
@@ -122,30 +157,30 @@
     "id"
    ],
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Poll"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "insertDeviceInfo": {
-   "id": "deviceinfoendpoint.insertDeviceInfo",
-   "path": "deviceinfo",
+  "insertPoll": {
+   "id": "pollendpoint.insertPoll",
+   "path": "poll",
    "httpMethod": "POST",
    "request": {
-    "$ref": "DeviceInfo",
+    "$ref": "Poll",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Poll"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "listDeviceInfo": {
-   "id": "deviceinfoendpoint.listDeviceInfo",
-   "path": "deviceinfo",
+  "listPoll": {
+   "id": "pollendpoint.listPoll",
+   "path": "poll",
    "httpMethod": "GET",
    "parameters": {
     "cursor": {
@@ -159,20 +194,21 @@
     }
    },
    "response": {
-    "$ref": "CollectionResponse_DeviceInfo"
+    "$ref": "CollectionResponse_Poll"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "removeDeviceInfo": {
-   "id": "deviceinfoendpoint.removeDeviceInfo",
-   "path": "deviceinfo/{id}",
+  "removePoll": {
+   "id": "pollendpoint.removePoll",
+   "path": "poll/{id}",
    "httpMethod": "DELETE",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
+     "format": "int64",
      "location": "path"
     }
    },
@@ -183,16 +219,16 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "updateDeviceInfo": {
-   "id": "deviceinfoendpoint.updateDeviceInfo",
-   "path": "deviceinfo",
+  "updatePoll": {
+   "id": "pollendpoint.updatePoll",
+   "path": "poll",
    "httpMethod": "PUT",
    "request": {
-    "$ref": "DeviceInfo",
+    "$ref": "Poll",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Poll"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

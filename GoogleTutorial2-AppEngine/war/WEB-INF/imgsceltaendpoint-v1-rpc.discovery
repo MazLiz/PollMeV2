@@ -1,9 +1,9 @@
 {
- "kind": "discovery#restDescription",
- "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/1mxmv_YDC4h5IpaWpePtbieM-Wc\"",
+ "kind": "discovery#rpcDescription",
+ "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/M6KvYxqiCa7YGjPp31LkNuPTjvU\"",
  "discoveryVersion": "v1",
- "id": "deviceinfoendpoint:v1",
- "name": "deviceinfoendpoint",
+ "id": "imgsceltaendpoint:v1",
+ "name": "imgsceltaendpoint",
  "version": "v1",
  "description": "This is an API",
  "ownerDomain": "example.com",
@@ -13,12 +13,10 @@
   "x16": "http://www.google.com/images/icons/product/search-16.gif",
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
- "protocol": "rest",
- "baseUrl": "https://myapp.appspot.com/_ah/api/deviceinfoendpoint/v1/",
- "basePath": "/_ah/api/deviceinfoendpoint/v1/",
+ "protocol": "rpc",
  "rootUrl": "https://myapp.appspot.com/_ah/api/",
- "servicePath": "deviceinfoendpoint/v1/",
- "batchPath": "batch",
+ "rpcUrl": "https://myapp.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
  "parameters": {
   "alt": {
    "type": "string",
@@ -74,14 +72,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_DeviceInfo": {
-   "id": "CollectionResponse_DeviceInfo",
+  "CollectionResponse_ImgScelta": {
+   "id": "CollectionResponse_ImgScelta",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "DeviceInfo"
+      "$ref": "ImgScelta"
      }
     },
     "nextPageToken": {
@@ -89,91 +87,120 @@
     }
    }
   },
-  "DeviceInfo": {
-   "id": "DeviceInfo",
+  "ImgScelta": {
+   "id": "ImgScelta",
    "type": "object",
    "properties": {
-    "deviceInformation": {
+    "immagine": {
+     "$ref": "Key"
+    },
+    "keyIS": {
+     "$ref": "Key"
+    },
+    "keyImg": {
+     "$ref": "Key"
+    },
+    "keyPoll": {
+     "$ref": "Key"
+    },
+    "utente": {
+     "type": "string"
+    }
+   }
+  },
+  "Key": {
+   "id": "Key",
+   "type": "object",
+   "properties": {
+    "appId": {
      "type": "string"
     },
-    "deviceRegistrationID": {
-     "type": "string"
+    "complete": {
+     "type": "boolean"
     },
-    "timestamp": {
+    "id": {
      "type": "string",
      "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
     }
    }
   }
  },
  "methods": {
-  "getDeviceInfo": {
-   "id": "deviceinfoendpoint.getDeviceInfo",
-   "path": "deviceinfo/{id}",
-   "httpMethod": "GET",
+  "imgsceltaendpoint.getImgScelta": {
+   "id": "imgsceltaendpoint.getImgScelta",
+   "allowGet": true,
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
-     "location": "path"
+     "format": "int64"
     }
    },
    "parameterOrder": [
     "id"
    ],
-   "response": {
-    "$ref": "DeviceInfo"
+   "returns": {
+    "$ref": "ImgScelta"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "insertDeviceInfo": {
-   "id": "deviceinfoendpoint.insertDeviceInfo",
-   "path": "deviceinfo",
-   "httpMethod": "POST",
-   "request": {
-    "$ref": "DeviceInfo",
-    "parameterName": "resource"
+  "imgsceltaendpoint.insertImgScelta": {
+   "id": "imgsceltaendpoint.insertImgScelta",
+   "parameters": {
+    "resource": {
+     "$ref": "ImgScelta"
+    }
    },
-   "response": {
-    "$ref": "DeviceInfo"
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "ImgScelta"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "listDeviceInfo": {
-   "id": "deviceinfoendpoint.listDeviceInfo",
-   "path": "deviceinfo",
-   "httpMethod": "GET",
+  "imgsceltaendpoint.listImgScelta": {
+   "id": "imgsceltaendpoint.listImgScelta",
+   "allowGet": true,
    "parameters": {
     "cursor": {
-     "type": "string",
-     "location": "query"
+     "type": "string"
     },
     "limit": {
      "type": "integer",
-     "format": "int32",
-     "location": "query"
+     "format": "int32"
     }
    },
-   "response": {
-    "$ref": "CollectionResponse_DeviceInfo"
+   "returns": {
+    "$ref": "CollectionResponse_ImgScelta"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "removeDeviceInfo": {
-   "id": "deviceinfoendpoint.removeDeviceInfo",
-   "path": "deviceinfo/{id}",
-   "httpMethod": "DELETE",
+  "imgsceltaendpoint.removeImgScelta": {
+   "id": "imgsceltaendpoint.removeImgScelta",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
-     "location": "path"
+     "format": "int64"
     }
    },
    "parameterOrder": [
@@ -183,16 +210,18 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "updateDeviceInfo": {
-   "id": "deviceinfoendpoint.updateDeviceInfo",
-   "path": "deviceinfo",
-   "httpMethod": "PUT",
-   "request": {
-    "$ref": "DeviceInfo",
-    "parameterName": "resource"
+  "imgsceltaendpoint.updateImgScelta": {
+   "id": "imgsceltaendpoint.updateImgScelta",
+   "parameters": {
+    "resource": {
+     "$ref": "ImgScelta"
+    }
    },
-   "response": {
-    "$ref": "DeviceInfo"
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "ImgScelta"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

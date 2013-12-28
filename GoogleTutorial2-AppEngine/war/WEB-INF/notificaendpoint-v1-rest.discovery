@@ -1,9 +1,9 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/1mxmv_YDC4h5IpaWpePtbieM-Wc\"",
+ "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/W3g3j2w8C1zbLJrX2MHdkxNS6KI\"",
  "discoveryVersion": "v1",
- "id": "deviceinfoendpoint:v1",
- "name": "deviceinfoendpoint",
+ "id": "notificaendpoint:v1",
+ "name": "notificaendpoint",
  "version": "v1",
  "description": "This is an API",
  "ownerDomain": "example.com",
@@ -14,10 +14,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myapp.appspot.com/_ah/api/deviceinfoendpoint/v1/",
- "basePath": "/_ah/api/deviceinfoendpoint/v1/",
+ "baseUrl": "https://myapp.appspot.com/_ah/api/notificaendpoint/v1/",
+ "basePath": "/_ah/api/notificaendpoint/v1/",
  "rootUrl": "https://myapp.appspot.com/_ah/api/",
- "servicePath": "deviceinfoendpoint/v1/",
+ "servicePath": "notificaendpoint/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -74,14 +74,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_DeviceInfo": {
-   "id": "CollectionResponse_DeviceInfo",
+  "CollectionResponse_Notifica": {
+   "id": "CollectionResponse_Notifica",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "DeviceInfo"
+      "$ref": "Notifica"
      }
     },
     "nextPageToken": {
@@ -89,32 +89,66 @@
     }
    }
   },
-  "DeviceInfo": {
-   "id": "DeviceInfo",
+  "Key": {
+   "id": "Key",
    "type": "object",
    "properties": {
-    "deviceInformation": {
+    "appId": {
      "type": "string"
     },
-    "deviceRegistrationID": {
-     "type": "string"
+    "complete": {
+     "type": "boolean"
     },
-    "timestamp": {
+    "id": {
      "type": "string",
      "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
+    }
+   }
+  },
+  "Notifica": {
+   "id": "Notifica",
+   "type": "object",
+   "properties": {
+    "destinatarioN": {
+     "type": "string"
+    },
+    "keyN": {
+     "$ref": "Key"
+    },
+    "mittenteN": {
+     "type": "string"
+    },
+    "statoLett": {
+     "type": "string"
+    },
+    "tipo": {
+     "type": "string"
     }
    }
   }
  },
  "methods": {
-  "getDeviceInfo": {
-   "id": "deviceinfoendpoint.getDeviceInfo",
-   "path": "deviceinfo/{id}",
+  "getNotifica": {
+   "id": "notificaendpoint.getNotifica",
+   "path": "notifica/{id}",
    "httpMethod": "GET",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
+     "format": "int64",
      "location": "path"
     }
    },
@@ -122,30 +156,30 @@
     "id"
    ],
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Notifica"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "insertDeviceInfo": {
-   "id": "deviceinfoendpoint.insertDeviceInfo",
-   "path": "deviceinfo",
+  "insertNotifica": {
+   "id": "notificaendpoint.insertNotifica",
+   "path": "notifica",
    "httpMethod": "POST",
    "request": {
-    "$ref": "DeviceInfo",
+    "$ref": "Notifica",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Notifica"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "listDeviceInfo": {
-   "id": "deviceinfoendpoint.listDeviceInfo",
-   "path": "deviceinfo",
+  "listNotifica": {
+   "id": "notificaendpoint.listNotifica",
+   "path": "notifica",
    "httpMethod": "GET",
    "parameters": {
     "cursor": {
@@ -159,20 +193,21 @@
     }
    },
    "response": {
-    "$ref": "CollectionResponse_DeviceInfo"
+    "$ref": "CollectionResponse_Notifica"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "removeDeviceInfo": {
-   "id": "deviceinfoendpoint.removeDeviceInfo",
-   "path": "deviceinfo/{id}",
+  "removeNotifica": {
+   "id": "notificaendpoint.removeNotifica",
+   "path": "notifica/{id}",
    "httpMethod": "DELETE",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
+     "format": "int64",
      "location": "path"
     }
    },
@@ -183,16 +218,16 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "updateDeviceInfo": {
-   "id": "deviceinfoendpoint.updateDeviceInfo",
-   "path": "deviceinfo",
+  "updateNotifica": {
+   "id": "notificaendpoint.updateNotifica",
+   "path": "notifica",
    "httpMethod": "PUT",
    "request": {
-    "$ref": "DeviceInfo",
+    "$ref": "Notifica",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Notifica"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

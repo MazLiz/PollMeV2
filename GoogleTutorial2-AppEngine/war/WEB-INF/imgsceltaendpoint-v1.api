@@ -2,7 +2,7 @@
   "extends" : "thirdParty.api",
   "abstract" : false,
   "root" : "https://myapp.appspot.com/_ah/api",
-  "name" : "deviceinfoendpoint",
+  "name" : "imgsceltaendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
@@ -27,14 +27,14 @@
   "ownerName" : "example.com",
   "packagePath" : "googletutorial2",
   "methods" : {
-    "deviceinfoendpoint.listDeviceInfo" : {
-      "path" : "deviceinfo",
+    "imgsceltaendpoint.listImgScelta" : {
+      "path" : "imgscelta",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.listDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.ImgSceltaEndpoint.listImgScelta",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -52,14 +52,35 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "deviceinfoendpoint.insertDeviceInfo" : {
-      "path" : "deviceinfo",
-      "httpMethod" : "POST",
+    "imgsceltaendpoint.removeImgScelta" : {
+      "path" : "imgscelta/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.insertDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.ImgSceltaEndpoint.removeImgScelta",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "imgsceltaendpoint.updateImgScelta" : {
+      "path" : "imgscelta",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.googletutorial2.ImgSceltaEndpoint.updateImgScelta",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -68,18 +89,18 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "deviceinfoendpoint.getDeviceInfo" : {
-      "path" : "deviceinfo/{id}",
+    "imgsceltaendpoint.getImgScelta" : {
+      "path" : "imgscelta/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.getDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.ImgSceltaEndpoint.getImgScelta",
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "string",
+            "type" : "int64",
             "required" : true
           }
         },
@@ -89,35 +110,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "deviceinfoendpoint.removeDeviceInfo" : {
-      "path" : "deviceinfo/{id}",
-      "httpMethod" : "DELETE",
+    "imgsceltaendpoint.insertImgScelta" : {
+      "path" : "imgscelta",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.removeDeviceInfo",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "deviceinfoendpoint.updateDeviceInfo" : {
-      "path" : "deviceinfo",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.updateDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.ImgSceltaEndpoint.insertImgScelta",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -129,14 +129,14 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_DeviceInfo" : {
-        "id" : "CollectionResponse_DeviceInfo",
+      "CollectionResponse_ImgScelta" : {
+        "id" : "CollectionResponse_ImgScelta",
         "type" : "object",
         "properties" : {
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "DeviceInfo"
+              "$ref" : "ImgScelta"
             }
           },
           "nextPageToken" : {
@@ -144,50 +144,83 @@
           }
         }
       },
-      "DeviceInfo" : {
-        "id" : "DeviceInfo",
+      "ImgScelta" : {
+        "id" : "ImgScelta",
         "type" : "object",
         "properties" : {
-          "deviceRegistrationID" : {
+          "keyIS" : {
+            "$ref" : "Key"
+          },
+          "keyPoll" : {
+            "$ref" : "Key"
+          },
+          "keyImg" : {
+            "$ref" : "Key"
+          },
+          "utente" : {
             "type" : "string"
           },
-          "deviceInformation" : {
+          "immagine" : {
+            "$ref" : "Key"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
             "type" : "string"
           },
-          "timestamp" : {
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
             "type" : "string",
             "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
           }
         }
       }
     },
     "methods" : {
-      "com.example.googletutorial2.DeviceInfoEndpoint.listDeviceInfo" : {
+      "com.example.googletutorial2.ImgSceltaEndpoint.listImgScelta" : {
         "response" : {
-          "$ref" : "CollectionResponse_DeviceInfo"
+          "$ref" : "CollectionResponse_ImgScelta"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.insertDeviceInfo" : {
+      "com.example.googletutorial2.ImgSceltaEndpoint.removeImgScelta" : {
+      },
+      "com.example.googletutorial2.ImgSceltaEndpoint.updateImgScelta" : {
         "request" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "ImgScelta"
         },
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "ImgScelta"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.getDeviceInfo" : {
+      "com.example.googletutorial2.ImgSceltaEndpoint.getImgScelta" : {
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "ImgScelta"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.removeDeviceInfo" : {
-      },
-      "com.example.googletutorial2.DeviceInfoEndpoint.updateDeviceInfo" : {
+      "com.example.googletutorial2.ImgSceltaEndpoint.insertImgScelta" : {
         "request" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "ImgScelta"
         },
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "ImgScelta"
         }
       }
     }

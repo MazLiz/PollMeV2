@@ -1,9 +1,9 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/1mxmv_YDC4h5IpaWpePtbieM-Wc\"",
+ "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/rqw1Jo45bf08Omcxbuh94yH3_q0\"",
  "discoveryVersion": "v1",
- "id": "deviceinfoendpoint:v1",
- "name": "deviceinfoendpoint",
+ "id": "utenteendpoint:v1",
+ "name": "utenteendpoint",
  "version": "v1",
  "description": "This is an API",
  "ownerDomain": "example.com",
@@ -14,10 +14,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myapp.appspot.com/_ah/api/deviceinfoendpoint/v1/",
- "basePath": "/_ah/api/deviceinfoendpoint/v1/",
+ "baseUrl": "https://myapp.appspot.com/_ah/api/utenteendpoint/v1/",
+ "basePath": "/_ah/api/utenteendpoint/v1/",
  "rootUrl": "https://myapp.appspot.com/_ah/api/",
- "servicePath": "deviceinfoendpoint/v1/",
+ "servicePath": "utenteendpoint/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -74,14 +74,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_DeviceInfo": {
-   "id": "CollectionResponse_DeviceInfo",
+  "CollectionResponse_Utente": {
+   "id": "CollectionResponse_Utente",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "DeviceInfo"
+      "$ref": "Utente"
      }
     },
     "nextPageToken": {
@@ -89,27 +89,88 @@
     }
    }
   },
-  "DeviceInfo": {
-   "id": "DeviceInfo",
+  "Key": {
+   "id": "Key",
    "type": "object",
    "properties": {
-    "deviceInformation": {
+    "appId": {
      "type": "string"
     },
-    "deviceRegistrationID": {
-     "type": "string"
+    "complete": {
+     "type": "boolean"
     },
-    "timestamp": {
+    "id": {
      "type": "string",
      "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
+    }
+   }
+  },
+  "Utente": {
+   "id": "Utente",
+   "type": "object",
+   "properties": {
+    "cap": {
+     "type": "string"
+    },
+    "citta": {
+     "type": "string"
+    },
+    "cognome": {
+     "type": "string"
+    },
+    "data": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "email": {
+     "type": "string"
+    },
+    "image": {
+     "$ref": "Key"
+    },
+    "img": {
+     "$ref": "Key"
+    },
+    "istruzione": {
+     "type": "string"
+    },
+    "nazione": {
+     "type": "string"
+    },
+    "nome": {
+     "type": "string"
+    },
+    "provincia": {
+     "type": "string"
+    },
+    "pwd": {
+     "type": "string"
+    },
+    "sesso": {
+     "type": "string"
+    },
+    "statoCiv": {
+     "type": "string"
     }
    }
   }
  },
  "methods": {
-  "getDeviceInfo": {
-   "id": "deviceinfoendpoint.getDeviceInfo",
-   "path": "deviceinfo/{id}",
+  "getUtente": {
+   "id": "utenteendpoint.getUtente",
+   "path": "utente/{id}",
    "httpMethod": "GET",
    "parameters": {
     "id": {
@@ -122,30 +183,30 @@
     "id"
    ],
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Utente"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "insertDeviceInfo": {
-   "id": "deviceinfoendpoint.insertDeviceInfo",
-   "path": "deviceinfo",
+  "insertUtente": {
+   "id": "utenteendpoint.insertUtente",
+   "path": "utente",
    "httpMethod": "POST",
    "request": {
-    "$ref": "DeviceInfo",
+    "$ref": "Utente",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Utente"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "listDeviceInfo": {
-   "id": "deviceinfoendpoint.listDeviceInfo",
-   "path": "deviceinfo",
+  "listUtente": {
+   "id": "utenteendpoint.listUtente",
+   "path": "utente",
    "httpMethod": "GET",
    "parameters": {
     "cursor": {
@@ -159,15 +220,15 @@
     }
    },
    "response": {
-    "$ref": "CollectionResponse_DeviceInfo"
+    "$ref": "CollectionResponse_Utente"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "removeDeviceInfo": {
-   "id": "deviceinfoendpoint.removeDeviceInfo",
-   "path": "deviceinfo/{id}",
+  "removeUtente": {
+   "id": "utenteendpoint.removeUtente",
+   "path": "utente/{id}",
    "httpMethod": "DELETE",
    "parameters": {
     "id": {
@@ -183,16 +244,16 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "updateDeviceInfo": {
-   "id": "deviceinfoendpoint.updateDeviceInfo",
-   "path": "deviceinfo",
+  "updateUtente": {
+   "id": "utenteendpoint.updateUtente",
+   "path": "utente",
    "httpMethod": "PUT",
    "request": {
-    "$ref": "DeviceInfo",
+    "$ref": "Utente",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "DeviceInfo"
+    "$ref": "Utente"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

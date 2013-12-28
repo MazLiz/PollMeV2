@@ -5,7 +5,7 @@
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>com.example.googletutorial2.DeviceInfoEndpoint,com.example.googletutorial2.MessageEndpoint,com.example.googletutorial2.MyImageEndpoint</param-value>
+   <param-value>com.example.googletutorial2.AmiciziaEndpoint,com.example.googletutorial2.DeviceInfoEndpoint,com.example.googletutorial2.ImgSceltaEndpoint,com.example.googletutorial2.MessageEndpoint,com.example.googletutorial2.MyImageEndpoint,com.example.googletutorial2.NotificaEndpoint,com.example.googletutorial2.PollEndpoint,com.example.googletutorial2.PollImageEndpoint,com.example.googletutorial2.PollSharingEndpoint,com.example.googletutorial2.UtenteEndpoint</param-value>
   </init-param>
  </servlet>
  

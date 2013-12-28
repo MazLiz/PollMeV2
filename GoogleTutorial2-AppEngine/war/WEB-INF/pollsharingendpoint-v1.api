@@ -2,7 +2,7 @@
   "extends" : "thirdParty.api",
   "abstract" : false,
   "root" : "https://myapp.appspot.com/_ah/api",
-  "name" : "deviceinfoendpoint",
+  "name" : "pollsharingendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
@@ -27,14 +27,14 @@
   "ownerName" : "example.com",
   "packagePath" : "googletutorial2",
   "methods" : {
-    "deviceinfoendpoint.listDeviceInfo" : {
-      "path" : "deviceinfo",
+    "pollsharingendpoint.listPollSharing" : {
+      "path" : "pollsharing",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.listDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.PollSharingEndpoint.listPollSharing",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -52,14 +52,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "deviceinfoendpoint.insertDeviceInfo" : {
-      "path" : "deviceinfo",
+    "pollsharingendpoint.insertPollSharing" : {
+      "path" : "pollsharing",
       "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.insertDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.PollSharingEndpoint.insertPollSharing",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -68,18 +68,18 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "deviceinfoendpoint.getDeviceInfo" : {
-      "path" : "deviceinfo/{id}",
+    "pollsharingendpoint.getPollSharing" : {
+      "path" : "pollsharing/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.getDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.PollSharingEndpoint.getPollSharing",
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "string",
+            "type" : "int64",
             "required" : true
           }
         },
@@ -89,35 +89,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "deviceinfoendpoint.removeDeviceInfo" : {
-      "path" : "deviceinfo/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.removeDeviceInfo",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "deviceinfoendpoint.updateDeviceInfo" : {
-      "path" : "deviceinfo",
+    "pollsharingendpoint.updatePollSharing" : {
+      "path" : "pollsharing",
       "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.googletutorial2.DeviceInfoEndpoint.updateDeviceInfo",
+      "rosyMethod" : "com.example.googletutorial2.PollSharingEndpoint.updatePollSharing",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -125,18 +104,39 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "pollsharingendpoint.removePollSharing" : {
+      "path" : "pollsharing/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.googletutorial2.PollSharingEndpoint.removePollSharing",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_DeviceInfo" : {
-        "id" : "CollectionResponse_DeviceInfo",
+      "CollectionResponse_PollSharing" : {
+        "id" : "CollectionResponse_PollSharing",
         "type" : "object",
         "properties" : {
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "DeviceInfo"
+              "$ref" : "PollSharing"
             }
           },
           "nextPageToken" : {
@@ -144,51 +144,88 @@
           }
         }
       },
-      "DeviceInfo" : {
-        "id" : "DeviceInfo",
+      "PollSharing" : {
+        "id" : "PollSharing",
         "type" : "object",
         "properties" : {
-          "deviceRegistrationID" : {
+          "keyPS" : {
+            "$ref" : "Key"
+          },
+          "destInvito" : {
             "type" : "string"
           },
-          "deviceInformation" : {
+          "letto" : {
             "type" : "string"
           },
-          "timestamp" : {
+          "dataInv" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "mittInvito" : {
+            "type" : "string"
+          },
+          "poll" : {
+            "$ref" : "Key"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
             "type" : "string",
             "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
           }
         }
       }
     },
     "methods" : {
-      "com.example.googletutorial2.DeviceInfoEndpoint.listDeviceInfo" : {
+      "com.example.googletutorial2.PollSharingEndpoint.listPollSharing" : {
         "response" : {
-          "$ref" : "CollectionResponse_DeviceInfo"
+          "$ref" : "CollectionResponse_PollSharing"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.insertDeviceInfo" : {
+      "com.example.googletutorial2.PollSharingEndpoint.insertPollSharing" : {
         "request" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "PollSharing"
         },
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "PollSharing"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.getDeviceInfo" : {
+      "com.example.googletutorial2.PollSharingEndpoint.getPollSharing" : {
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "PollSharing"
         }
       },
-      "com.example.googletutorial2.DeviceInfoEndpoint.removeDeviceInfo" : {
-      },
-      "com.example.googletutorial2.DeviceInfoEndpoint.updateDeviceInfo" : {
+      "com.example.googletutorial2.PollSharingEndpoint.updatePollSharing" : {
         "request" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "PollSharing"
         },
         "response" : {
-          "$ref" : "DeviceInfo"
+          "$ref" : "PollSharing"
         }
+      },
+      "com.example.googletutorial2.PollSharingEndpoint.removePollSharing" : {
       }
     }
   }
