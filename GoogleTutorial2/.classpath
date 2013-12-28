@@ -115,8 +115,15 @@
 			<attribute name="javadoc_location" value="file:/C:/Users/lisetta/Desktop/eclipse/adt-bundle-windows-x86-20131030/appengine-java-sdk-1.8.8/docs/javadoc/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="endpoint-libs/libamiciziaendpoint-v1/amiciziaendpoint/amiciziaendpoint-v1-generated-source"/>
 	<classpathentry kind="src" path="endpoint-libs/libdeviceinfoendpoint-v1/deviceinfoendpoint/deviceinfoendpoint-v1-generated-source"/>
+	<classpathentry kind="src" path="endpoint-libs/libimgsceltaendpoint-v1/imgsceltaendpoint/imgsceltaendpoint-v1-generated-source"/>
 	<classpathentry kind="src" path="endpoint-libs/libmessageEndpoint-v1/messageEndpoint/messageendpoint-v1-generated-source"/>
 	<classpathentry kind="src" path="endpoint-libs/libmyimageendpoint-v1/myimageendpoint/myimageendpoint-v1-generated-source"/>
+	<classpathentry kind="src" path="endpoint-libs/libnotificaendpoint-v1/notificaendpoint/notificaendpoint-v1-generated-source"/>
+	<classpathentry kind="src" path="endpoint-libs/libpollendpoint-v1/pollendpoint/pollendpoint-v1-generated-source"/>
+	<classpathentry kind="src" path="endpoint-libs/libpollimageendpoint-v1/pollimageendpoint/pollimageendpoint-v1-generated-source"/>
+	<classpathentry kind="src" path="endpoint-libs/libpollsharingendpoint-v1/pollsharingendpoint/pollsharingendpoint-v1-generated-source"/>
+	<classpathentry kind="src" path="endpoint-libs/libutenteendpoint-v1/utenteendpoint/utenteendpoint-v1-generated-source"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
