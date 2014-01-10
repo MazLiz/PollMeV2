@@ -1,16 +1,7 @@
 package com.example.googletutorial2;
 //ciaoooooooo! Funzioaaaaaaaaaaaaaa
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 
-import com.example.googletutorial2.pollendpoint.Pollendpoint;
-import com.example.googletutorial2.pollendpoint.model.CollectionResponsePoll;
-import com.example.googletutorial2.pollendpoint.model.Key;
-import com.example.googletutorial2.pollendpoint.model.Poll;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,13 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.Context;
 
+import com.example.googletutorial2.checkinendpoint.Checkinendpoint;
+import com.example.googletutorial2.checkinendpoint.model.CheckIn;
+import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.json.jackson.JacksonFactory;
-import com.google.api.client.util.Data;
-import com.google.api.client.util.DateTime;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestInitializer;
 
 
 
@@ -57,8 +46,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//prova
-		new EndpointsProva().execute();
+		new CheckInTask().execute();
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -69,6 +57,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		button.setOnClickListener(this);
 
 
+		
 	}
 
 	// Implement the OnClickListener callback
@@ -88,33 +77,47 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 	
-	private class EndpointsProva extends AsyncTask<Void, Void, Void > {
-        @Override
-		protected Void doInBackground(Void... params) {
-        	
-        	Poll poll = new Poll();
-            poll.setCreatore("Lisa");
-            poll.setDataCr(new DateTime(System.currentTimeMillis()));
-            poll.setTitolo("questo è il titolo");
+	
+	
+	 /**
+	   * AsyncTask for calling Mobile Assistant API for checking into a place (e.g., a store)
+	   */
+	  private class CheckInTask extends AsyncTask<Void, Void, Void> {
 
-      Pollendpoint.Builder endpointBuilder = new Pollendpoint.Builder(
-    		 AndroidHttp.newCompatibleTransport(), 
-    		 new JacksonFactory(), 
-    		 null);
-      endpointBuilder = CloudEndpointUtils.updateBuilder(endpointBuilder);
-      Pollendpoint endpoint = endpointBuilder.build();
-      
-      try {
-          
-          endpoint.insertPoll(poll).execute();
-      
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-          
-      return null;
-        }
-    }
+	    /**
+	     * Calls appropriate CloudEndpoint to indicate that user checked into a place.
+	     *
+	     * @param params the place where the user is checking in.
+	     */
+	    @Override
+	    protected Void doInBackground(Void... params) {
+	      CheckIn checkin = new CheckIn();
+	      
+	      // Set the ID of the store where the user is. 
+	      // This would be replaced by the actual ID in the final version of the code. 
+	      checkin.setPlaceId("StoreNo123");
+
+	      Checkinendpoint.Builder builder = new Checkinendpoint.Builder(
+	          AndroidHttp.newCompatibleTransport(), new JacksonFactory(),
+	          null);
+	          
+	      builder = CloudEndpointUtils.updateBuilder(builder);
+
+	      Checkinendpoint endpoint = builder.build();
+	      
+
+	      try {
+	        endpoint.insertCheckIn(checkin).execute();
+	      } catch (IOException e) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	      }
+
+	      return null;
+	    }
+	  }
+
+
 
 	// Risponde alla pressione di un pulsante sul menù
 	@Override

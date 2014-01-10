@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 filesCopiedToWebInfLib=
 googleCloudSqlEnabled=false
 localDevMySqlEnabled=true
+ormEnhancementInclusions=src/|gen/|endpoint-libs/libpollendpoint-v1/pollendpoint/pollendpoint-v1-generated-source/
