@@ -2,11 +2,10 @@ package com.example.googletutorial2;
 
 import java.util.Date;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.Key;
@@ -20,7 +19,7 @@ public class Utente {
 	/*@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key id;*/
 
-	@PrimaryKey
+	@Id
     @Persistent
     private String email;
 

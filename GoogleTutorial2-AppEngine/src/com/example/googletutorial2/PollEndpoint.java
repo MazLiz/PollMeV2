@@ -98,9 +98,6 @@ public class PollEndpoint {
 	public Poll insertPoll(Poll poll) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (containsPoll(poll)) {
-				throw new EntityExistsException("Object already exists");
-			}
 			mgr.persist(poll);
 		} finally {
 			mgr.close();

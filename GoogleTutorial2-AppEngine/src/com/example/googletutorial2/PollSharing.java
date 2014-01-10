@@ -4,15 +4,15 @@ import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import com.google.appengine.api.datastore.Key;
 
 @Entity
 public class PollSharing {
 
-	@PrimaryKey
+	@Id
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key keyPS;
 	
