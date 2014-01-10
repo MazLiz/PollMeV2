@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.example.googletutorial2.pollendpoint.Pollendpoint;
 import com.example.googletutorial2.pollendpoint.model.CollectionResponsePoll;
+import com.example.googletutorial2.pollendpoint.model.Key;
 import com.example.googletutorial2.pollendpoint.model.Poll;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 
@@ -55,6 +56,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//prova
+		new EndpointsProva().execute();
+		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		imageView = (ImageView) findViewById(R.id.imageView1);
@@ -63,7 +68,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		Button button = (Button) findViewById(R.id.take_photo);
 		button.setOnClickListener(this);
 
-		new EndpointsProva().execute();
 
 	}
 
@@ -84,9 +88,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 	
-	public class EndpointsProva extends AsyncTask<Context, Integer, Long> {
-        protected Long doInBackground(Context... contexts) {
-
+	private class EndpointsProva extends AsyncTask<Void, Void, Void > {
+        @Override
+		protected Void doInBackground(Void... params) {
+        	
         	Poll poll = new Poll();
             poll.setCreatore("Lisa");
             poll.setDataCr(new DateTime(System.currentTimeMillis()));
@@ -106,7 +111,8 @@ public class MainActivity extends Activity implements OnClickListener {
       } catch (IOException e) {
         e.printStackTrace();
       }
-          return (long) 0;
+          
+      return null;
         }
     }
 
