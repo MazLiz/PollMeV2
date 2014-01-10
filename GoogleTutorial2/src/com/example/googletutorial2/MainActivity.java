@@ -1,5 +1,5 @@
 package com.example.googletutorial2;
-//ciaoooooooo! Funzioaaaaaaaaaaaaaa
+//ciaoooooooo!
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
