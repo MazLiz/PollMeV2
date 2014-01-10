@@ -8,6 +8,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -17,7 +18,7 @@ public class Poll {
 	
 //TODO: introduzione in ordine di data!
 	
-	@PrimaryKey
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key keyPoll;
 	
