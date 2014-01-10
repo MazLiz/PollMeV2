@@ -1,10 +1,20 @@
 package com.example.googletutorial2;
-//ciaoooooooo!
+//ciaoooooooo! Funzioaaaaaaaaaaaaaa
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import com.example.googletutorial2.pollendpoint.Pollendpoint;
+import com.example.googletutorial2.pollendpoint.model.CollectionResponsePoll;
+import com.example.googletutorial2.pollendpoint.model.Poll;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +23,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.content.Context;
+
+import com.google.api.client.json.jackson.JacksonFactory;
+import com.google.api.client.util.Data;
+import com.google.api.client.util.DateTime;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestInitializer;
+
+
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -28,6 +48,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	final public int imageServeCode = 101;
 	
+	private TextView resultsList;
+
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,7 +63,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		Button button = (Button) findViewById(R.id.take_photo);
 		button.setOnClickListener(this);
 
-		
+		new EndpointsProva().execute();
 
 	}
 
@@ -60,6 +83,32 @@ public class MainActivity extends Activity implements OnClickListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	public class EndpointsProva extends AsyncTask<Context, Integer, Long> {
+        protected Long doInBackground(Context... contexts) {
+
+        	Poll poll = new Poll();
+            poll.setCreatore("Lisa");
+            poll.setDataCr(new DateTime(System.currentTimeMillis()));
+            poll.setTitolo("questo è il titolo");
+
+      Pollendpoint.Builder endpointBuilder = new Pollendpoint.Builder(
+    		 AndroidHttp.newCompatibleTransport(), 
+    		 new JacksonFactory(), 
+    		 null);
+      endpointBuilder = CloudEndpointUtils.updateBuilder(endpointBuilder);
+      Pollendpoint endpoint = endpointBuilder.build();
+      
+      try {
+          
+          endpoint.insertPoll(poll).execute();
+      
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+          return (long) 0;
+        }
+    }
 
 	// Risponde alla pressione di un pulsante sul menù
 	@Override
@@ -144,4 +193,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			  
 		  }
 		}//onActivityResult
-	}
+	
+
+}
